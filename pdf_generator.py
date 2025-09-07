@@ -32,18 +32,18 @@ def gerar_boleto_pdf(data):
     c.drawString(20 * mm, 250 * mm, f"Vencimento: {vencimento}")
     c.drawRightString(190 * mm, 250 * mm, f"Valor: {formatar_valor(valor)}")
 
-    # Beneficiário
+    # Beneficiário (antes pagador)
     c.setFont("Helvetica-Bold", 10)
     c.drawString(20 * mm, 235 * mm, "Beneficiário:")
     c.setFont("Helvetica", 10)
-    c.drawString(25 * mm, 223 * mm, f"{beneficiario['nome']} | CNPJ: {beneficiario['cnpj']}")
+    c.drawString(25 * mm, 223 * mm, f"{pagador['nome']} | CPF: {pagador['cpf']}")
     c.drawString(25 * mm, 210 * mm, f"Banco: {beneficiario['banco']} | Agência: {beneficiario['agencia']} | Conta: {beneficiario['conta']}")
 
-    # Pagador
+    # Pagador (antes beneficiário)
     c.setFont("Helvetica-Bold", 10)
     c.drawString(20 * mm, 190 * mm, "Pagador:")
     c.setFont("Helvetica", 10)
-    c.drawString(25 * mm, 178 * mm, f"{pagador['nome']} | CPF: {pagador['cpf']}")
+    c.drawString(25 * mm, 178 * mm, f"{beneficiario['nome']} | CNPJ: {beneficiario['cnpj']}")
     c.drawString(25 * mm, 165 * mm, f"Endereço: {pagador['endereco']}")
 
     # Caixas ao redor dos blocos
@@ -60,5 +60,6 @@ def gerar_boleto_pdf(data):
 
     c.showPage()
     c.save()
+
     buffer.seek(0)
     return buffer
