@@ -2,14 +2,15 @@
   "pagador": {
     "nome": "Empresa XYZ Ltda",
     "cnpj": "12.345.678/0001-90",
-    "banco": "Bradesco",
-    "agencia": "1234",
-    "conta": "567890"
+    "endereco": "Rua das Palmeiras, 123 - São Paulo"
+    
   },
   "beneficiario": {
     "nome": "João Silva",
     "cpf": "123.456.789-00",
-    "endereco": "Rua das Palmeiras, 123 - São Paulo"
+    "banco": "Bradesco",
+    "agencia": "1234",
+    "conta": "567890"
   },
   "valor": 299.90,
   "vencimento": "2025-08-10",
