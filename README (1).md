@@ -88,13 +88,14 @@ POST /boleto
 ```json
 {
   "pagador": {
-    "nome": "João Silva",
-    "cpf": "123.456.789-00",
-    "endereco": "Rua das Palmeiras, 123 - São Paulo"
-  },
-  "beneficiario": {
     "nome": "Empresa XYZ Ltda",
     "cnpj": "12.345.678/0001-90",
+    "endereco": "Rua das Palmeiras, 123 - São Paulo"
+    
+  },
+  "beneficiario": {
+    "nome": "João Silva",
+    "cpf": "123.456.789-00",
     "banco": "Bradesco",
     "agencia": "1234",
     "conta": "567890"
