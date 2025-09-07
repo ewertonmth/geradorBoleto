@@ -10,7 +10,7 @@ A aplicação gera **boletos em PDF** a partir de dados fornecidos via API ou sc
 
 - API em **Flask** para geração de boletos via requisições HTTP.  
 - Geração de **boletos em PDF** utilizando a biblioteca **ReportLab**.  
-- Estrutura com **Pagador** (diarista) e **Beneficiário** (empresa).  
+- Estrutura com **Pagador** (empresa) e **Beneficiário** (diarista).  
 - Criação de **linha digitável** e **código de barras** (exemplo simulado).  
 - Organização clara dos dados de pagamento no PDF.  
 
