@@ -1,0 +1,215 @@
+:root {
+  --bg-dark: #000000;
+  --container-bg-dark: #0a1a40;
+  --text-light: #ffffff;
+  --text-dark: #000000;
+  --primary-color: #5dade2;
+  --border-radius: 1rem;
+  --transition-speed: 0.5s;
+}
+
+/* --- Modo claro (padrão) --- */
+body {
+  background-color: #f5f7fa;
+  color: #222831;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 3rem auto;
+  max-width: 720px;
+  padding: 2rem 2.5rem;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+/* Containers */
+fieldset {
+  background-color: #ffffff;
+  border-radius: var(--border-radius);
+  padding: 2rem 2.5rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 15px rgba(66, 135, 245, 0.2);
+  border: none;
+}
+
+/* Legendas */
+legend {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  user-select: none;
+  transition: color var(--transition-speed);
+}
+
+/* Labels */
+label {
+  color: #34495e;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 1.1rem;
+  transition: color var(--transition-speed);
+}
+
+/* Inputs */
+input {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  font-size: 1.15rem;
+  border-radius: var(--border-radius);
+  border: 1.8px solid #b0c4de;
+  background-color: #f9fbfc;
+  color: #222831;
+  box-shadow: none;
+  margin-bottom: 1.6rem;
+  transition: border-color var(--transition-speed), background-color var(--transition-speed), color var(--transition-speed);
+}
+
+input:focus {
+  border-color: #3b7ddd;
+  box-shadow: 0 0 9px #3b7ddd;
+  outline: none;
+  background-color: #eaf1ff;
+  color: #222831;
+}
+
+/* Botão enviar */
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 1rem 0;
+  font-weight: 900;
+  font-size: 1.4rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  color: #f5f7fa;
+  background-color: #3b7ddd;
+  border: none;
+  box-shadow: 0 6px 18px #3b7ddd;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.15s ease;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  user-select: none;
+}
+
+button[type="submit"]:hover {
+  background-color: #2a5db8;
+  box-shadow: 0 9px 25px #2a5db8;
+  color: #f5f7fa;
+}
+
+button[type="submit"]:active {
+  transform: scale(0.97);
+}
+
+/* Botão alternar modo */
+
+.mode-toggle-container {
+  position: fixed;
+  top: 28px;
+  right: 38px;
+  z-index: 10000;
+}
+
+#toggle-theme {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 38px;
+  border-radius: 21px;
+  background: #232a38;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 18px rgba(33,42,56,0.27);
+  outline: none;
+  transition: background 0.3s;
+  position: relative;
+}
+
+.icon-wrap {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.icon.sun {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%) scale(1);
+  width: 27px;
+  height: 27px;
+  opacity: 1;
+  transition: opacity 0.5s, transform 0.5s;
+  z-index: 2;
+  background: url('data:image/svg+xml;utf8,<svg width="27" height="27" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="6" fill="%23FFD600"/><g stroke="%23FFD600" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.78" y2="4.22"/></g></svg>') center/contain no-repeat;
+}
+
+.icon.moon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%) scale(0.6);
+  width: 27px;
+  height: 27px;
+  opacity: 0;
+  transition: opacity 0.5s, transform 0.5s;
+  z-index: 1;
+  background: url('data:image/svg+xml;utf8,<svg width="27" height="27" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3c0 .39.31.71.7.74A7 7 0 0 0 20 13c.03.39.35.7.75.69z" fill="%23FFF"/></svg>') center/contain no-repeat;
+}
+
+body.dark {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+}
+
+body.dark fieldset {
+  background-color: var(--container-bg-dark);
+  box-shadow: 0 0 15px rgba(10, 26, 64, 0.75);
+}
+
+body.dark legend {
+  color: var(--text-light);
+}
+
+body.dark label {
+  color: var(--text-light);
+}
+
+body.dark input {
+  background-color: #17294a;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-light);
+  box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.7);
+}
+
+body.dark input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 10px var(--primary-color);
+  background-color: #223763;
+  color: var(--text-light);
+}
+
+body.dark button[type="submit"] {
+  background-color: var(--primary-color);
+  box-shadow: 0 4px 15px var(--primary-color);
+  color: var(--text-dark);
+}
+
+body.dark button[type="submit"]:hover {
+  background-color: #4076c4;
+  box-shadow: 0 8px 28px #4076c4;
+}
+
+body.dark .icon.sun {
+  opacity: 0;
+  transform: translate(-100%,-50%) scale(0.6);
+}
+
+body.dark .icon.moon {
+  opacity: 1;
+  transform: translate(-50%,-50%) scale(1);
+}

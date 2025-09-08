@@ -4,65 +4,76 @@
     <meta charset="UTF-8" />
     <title>Gerador de Boletos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <style>
-        body {
-            background-color: #121212;
-            color: #ddd;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 2rem;
-        }
-        fieldset {
-            border: 1px solid #444;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border-radius: 8px;
-            background-color: #1e1e1e;
-        }
-        input, button {
-            background-color: #333;
-            color: #eee;
-            border: 1px solid #555;
-            border-radius: 4px;
-            padding: 0.5rem;
-            width: 100%;
-            margin-top: 0.3rem;
-            margin-bottom: 0.8rem;
-        }
-        button {
-            background-color: #0056b3;
-            border-color: #004a99;
-        }
-        button:hover {
-            background-color: #004a99;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap" rel="stylesheet" />
 </head>
 <body>
-    <div class="container">
-        <h1>Gerador de Boletos - Cadastro</h1>
+    <!-- Botão alternância modo -->
+    <div class="mode-toggle-container">
+      <button id="toggle-theme" aria-label="Alternar tema">
+        <span class="icon-wrap">
+          <span class="icon sun"></span>
+          <span class="icon moon"></span>
+        </span>
+      </button>
+    </div>
+
+    <div class="container py-4" style="max-width: 720px; margin: 6rem auto 3rem auto;">
+        <h1 class="text-center mb-5">Gerador de Boletos</h1>
         <form method="POST" action="/boleto">
             <fieldset>
                 <legend>Pagador</legend>
-                Nome: <input type="text" name="pagador_nome" required />
-                CPF: <input type="text" name="pagador_cpf" required />
-                Endereço: <input type="text" name="pagador_endereco" required />
+                <div class="mb-3">
+                    <label for="pagador_nome" class="form-label">Nome</label>
+                    <input type="text" id="pagador_nome" name="pagador_nome" required class="form-control" autocomplete="name" />
+                </div>
+                <div class="mb-3">
+                    <label for="pagador_cpf" class="form-label">CPF</label>
+                    <input type="text" id="pagador_cpf" name="pagador_cpf" required class="form-control" autocomplete="off" />
+                </div>
+                <div class="mb-3">
+                    <label for="pagador_endereco" class="form-label">Endereço</label>
+                    <input type="text" id="pagador_endereco" name="pagador_endereco" required class="form-control" autocomplete="street-address" />
+                </div>
             </fieldset>
             <fieldset>
                 <legend>Beneficiário</legend>
-                Nome: <input type="text" name="beneficiario_nome" required />
-                CNPJ: <input type="text" name="beneficiario_cnpj" required />
-                Banco: <input type="text" name="beneficiario_banco" required />
-                Agência: <input type="text" name="beneficiario_agencia" required />
-                Conta: <input type="text" name="beneficiario_conta" required />
+                <div class="mb-3">
+                    <label for="beneficiario_nome" class="form-label">Nome</label>
+                    <input type="text" id="beneficiario_nome" name="beneficiario_nome" required class="form-control" autocomplete="organization" />
+                </div>
+                <div class="mb-3">
+                    <label for="beneficiario_cnpj" class="form-label">CNPJ</label>
+                    <input type="text" id="beneficiario_cnpj" name="beneficiario_cnpj" required class="form-control" autocomplete="off" />
+                </div>
+                <div class="mb-3">
+                    <label for="beneficiario_banco" class="form-label">Banco</label>
+                    <input type="text" id="beneficiario_banco" name="beneficiario_banco" required class="form-control" autocomplete="off" />
+                </div>
+                <div class="mb-3">
+                    <label for="beneficiario_agencia" class="form-label">Agência</label>
+                    <input type="text" id="beneficiario_agencia" name="beneficiario_agencia" required class="form-control" autocomplete="off" />
+                </div>
+                <div class="mb-3">
+                    <label for="beneficiario_conta" class="form-label">Conta</label>
+                    <input type="text" id="beneficiario_conta" name="beneficiario_conta" required class="form-control" autocomplete="off" />
+                </div>
             </fieldset>
             <fieldset>
                 <legend>Outros Dados</legend>
-                Valor: <input type="number" step="0.01" name="valor" required />
-                Vencimento: <input type="date" name="vencimento" required />
-                <!-- Nosso número removido do formulário pois é automático -->
+                <div class="mb-3">
+                    <label for="valor" class="form-label">Valor</label>
+                    <input type="number" step="0.01" id="valor" name="valor" required class="form-control" autocomplete="off" />
+                </div>
+                <div class="mb-3">
+                    <label for="vencimento" class="form-label">Vencimento</label>
+                    <input type="date" id="vencimento" name="vencimento" required class="form-control" autocomplete="off" />
+                </div>
             </fieldset>
-            <button type="submit">Gerar Boleto</button>
+            <button type="submit" class="btn btn-primary btn-lg w-100 text-uppercase fw-bold">Gerar Boleto</button>
         </form>
     </div>
+
+    <script src="{{ url_for('static', filename='js/theme-toggle.js') }}"></script>
 </body>
 </html>
